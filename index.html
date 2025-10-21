@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>La enfermera chala 2684</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#e6f0ff;margin:0;display:flex;align-items:center;justify-content:center;height:100vh;color:#111}
+    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,0.1);width:min(400px,95vw);text-align:center}
+    h1{margin-bottom:12px;font-size:1.4rem;color:#2563eb}
+    table{width:100%;border-collapse:collapse;margin:12px 0}
+    td{padding:10px;border:1px solid #ccc}
+    input{width:100%;padding:6px;border-radius:6px;border:1px solid #ccc;text-align:center}
+    button{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 14px;margin-top:12px;cursor:pointer;font-weight:bold}
+    .result{margin-top:16px;padding:10px;border-radius:8px;background:#f0f4ff;color:#111}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>La enfermera chala 2684</h1>
+    <p>Calculadora de regla de 3 simple</p>
+    <table>
+      <tr>
+        <td><label for="dato1">Dato 1</label><br><input type="number" id="dato1" step="any" placeholder="A"></td>
+        <td><label for="corresp1">Su correspondencia</label><br><input type="number" id="corresp1" step="any" placeholder="B"></td>
+      </tr>
+      <tr>
+        <td><label for="nuevo">Nuevo valor</label><br><input type="number" id="nuevo" step="any" placeholder="C"></td>
+        <td><label for="resultado">Valor buscado</label><br><input type="text" id="resultado" readonly></td>
+      </tr>
+    </table>
+    <button id="calc">Calcular</button>
+    <div id="out" class="result"></div>
+  </div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const a = $('dato1'), b = $('corresp1'), c = $('nuevo'), res = $('resultado'), out = $('out');
+
+    $('calc').addEventListener('click', ()=>{
+      const A = parseFloat(a.value), B = parseFloat(b.value), C = parseFloat(c.value);
+      if(!isFinite(A) || !isFinite(B) || !isFinite(C)){
+        out.textContent = 'Completa todos los campos correctamente.';
+        res.value = '';
+        return;
+      }
+      if(A === 0){ out.textContent = 'A no puede ser 0 (división por cero).'; return; }
+      const X = (B * C) / A;
+      res.value = X.toFixed(2);
+      out.innerHTML = `<strong>Así de fácil, zopenca 😎</strong><br>Resultado: X = ${X.toFixed(2)}`;
+    });
+  </script>
+</body>
+</html>
